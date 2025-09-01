@@ -1,0 +1,39 @@
+/* Minecraft color codes */
+.mc-0 { color: #000000; } /* Black */
+.mc-1 { color: #0000AA; } /* Dark Blue */
+.mc-2 { color: #00AA00; } /* Dark Green */
+.mc-3 { color: #00AAAA; } /* Dark Aqua */
+.mc-4 { color: #AA0000; } /* Dark Red */
+.mc-5 { color: #AA00AA; } /* Dark Purple */
+.mc-6 { color: #FFAA00; } /* Gold */
+.mc-7 { color: #AAAAAA; } /* Gray */
+.mc-8 { color: #555555; } /* Dark Gray */
+.mc-9 { color: #5555FF; } /* Blue */
+.mc-a { color: #55FF55; } /* Green */
+.mc-b { color: #55FFFF; } /* Aqua */
+.mc-c { color: #FF5555; } /* Red */
+.mc-d { color: #FF55FF; } /* Light Purple */
+.mc-e { color: #FFFF55; } /* Yellow */
+.mc-f { color: #FFFFFF; } /* White */
+
+/* Minecraft formatting codes */
+.mc-k {
+    animation: obfuscated 0.1s infinite;
+}
+.mc-l { font-weight: bold; }
+.mc-m { text-decoration: line-through; }
+.mc-n { text-decoration: underline; }
+.mc-o { font-style: italic; }
+.mc-r {
+    color: initial;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+}
+
+/* Obfuscated text animation */
+@keyframes obfuscated {
+    0% { opacity: 0.8; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0.8; }
+}

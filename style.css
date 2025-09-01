@@ -1,0 +1,362 @@
+html, body {
+    height: 100%;
+}
+main.container {
+    height: 100%;
+    position: relative;
+}
+#alertMessage{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+}
+.list-group-item {padding: 3px 10px;}
+.ui-autocomplete {
+    position: absolute;
+    z-index: 5;
+    cursor: default;
+    padding: 0;
+    list-style: none;
+    background-color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0px 0px;
+}
+.ui-autocomplete > li {
+    white-space: nowrap;
+}
+.ui-autocomplete > li div{
+    white-space: nowrap;
+    padding: 2px 12px;
+}
+.ui-autocomplete > li:hover {
+    background-color: #444;
+}
+.ui-state-active {
+    background-color: #333;
+}
+.ui-helper-hidden-accessible {
+    display: none;
+}
+div#txtCommandResults > ul{
+    max-height: 300px;
+    overflow-y: overlay;
+    overflow-x: hidden;
+}
+
+/* Web owner styles / Start */
+@font-face {
+    font-family: "White Rabbit";
+    src: local("White Rabbit"), url("https://assets.choomai.net/fonts/WhiteRabbit.woff");
+}
+* {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+body {
+    margin: 0;
+    overflow-y: hidden;
+    background-color: #121212;
+    color: white;
+}
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    backdrop-filter: blur(var(--blur-amount,0px));
+    background-color: rgba(0,0,0,var(--alpha-amount,0%));
+    transition: 800ms ease;
+}
+a {text-decoration:none;}
+a:hover {text-decoration:underline;}
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+h1, h2, h3, h4 {margin: 0;}
+/* Icons / Start */
+span.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48;
+    user-select: none;
+}
+/* Icons / End */
+/* Toggle switch / Start */
+.toggle {
+    appearance: none;
+    min-width: 54px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 1px;
+    border-radius: 50px;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #444;
+    margin: 3px 3px 3px 3px;
+    transition: background-color ease 0.3s;
+}
+.toggle::before {
+    /* content: "ON OFF"; */
+    content: "\e5cd";
+    display: inline-flex;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    left: 2px;
+    border-radius: 50%;
+    font-family: 'Material Symbols Outlined';
+    font-size: 21px;
+    font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48;
+    text-indent: 24px;
+    color: #eee;
+    text-shadow: -1px -1px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+}
+.toggle:checked {background-color: #3ea84f;}
+.toggle:checked::before {
+    content: "\e876";
+    text-indent: -25px;
+    left: 32px;
+}
+/* Toggle switch / End */
+div.alert {
+    background-color: #444;
+    padding: 14px;
+    border: 1px solid transparent;
+    border-radius: 0.15cm;
+}
+/* Console */
+div#consoleRow{
+    position: absolute;
+    top: 80px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+div.panel-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2cm;
+    margin-bottom: 0.2cm;
+    border-radius: 0.25cm;
+    height: fit-content;
+    background-color: #444;
+}
+h3.panel-title {
+    display: flex;
+    align-items: center;
+    margin: 0.2cm 0;
+}
+div.btn-group {
+    max-height: 1.5cm;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+a.btn-def {
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.2cm;
+    padding: 0.1cm 0.2cm;
+    overflow: hidden;
+    transition: 300ms ease;
+}
+a.changelog-hyp {color: limegreen;}
+a.cmd-help {color: dodgerblue}
+a.btn-def:hover {
+    text-decoration: none;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px #ffffffaa;
+    text-shadow: 0 5px 15px #ffffffaa;
+    transition: 300ms ease;
+}
+div#consoleContent {
+    position: absolute;
+    top: 0;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Console Body */
+ul#groupConsole * {overflow-anchor: none;}
+ul#groupConsole::after {
+    content: "";
+    overflow-anchor: auto;
+}
+div.panel-body {overflow-x: hidden;}
+time.label {
+    background-color: #eee;
+    font-family: monospace;
+    background-color: #333;
+    padding: 0.08cm;
+    border-radius: 0.05cm;
+    float: right;
+    user-select: none;
+}
+time.label-info {background-color: darkcyan;}
+time.label-success {background-color: green;}
+time.label-warning {background-color: darkgoldenrod;}
+time.label-danger {background-color: red;}
+
+/* User input and command button */
+@keyframes glow {to {background-position: 300%;}}
+.btn-gradient {
+    color: white;
+    background: linear-gradient(90deg, #00dbde, #fc00ff, #00dbde);
+    background-size: 300%;
+    border-radius: 2em;
+}
+.btn-gradient::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    bottom: -5px;
+    right: -5px;
+    z-index: -1;
+    background: inherit;
+    background-size: inherit;
+    opacity: 0;
+    transition: 500ms;
+}
+.btn-gradient:hover::before {
+    opacity: 1;
+    filter: blur(20px);
+    animation: glow 8s linear infinite;
+}
+div.input-group {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: fit-content;
+}
+span.settings {
+    display: flex;
+    padding: 0.2cm;
+    background-color: #444;
+    border-top-left-radius: 0.2cm;
+    border-bottom-left-radius: 0.2cm;
+}
+span.settings span.material-symbols-outlined {transition: 500ms ease;}
+span.settings span.material-symbols-outlined:hover {
+    color: lime;
+    transform: rotate(30deg) scale(1.3);
+    transition: 500ms ease;
+    cursor: pointer;
+}
+input.form-control {
+    position: relative;
+    display: flex;
+    line-height: 1.4286;
+    width: -webkit-fill-available;
+    width: -moz-available;
+    padding: 0.25cm 0.4cm;
+    border: 1px solid #fff;
+    background-color: #3b3b3b;
+    color: white;
+}
+div.input-group-btn {display: flex;}
+div.input-group-btn button {
+    display: flex;
+    align-items: center;
+    border-style: inset;
+    border: 1px solid #fff;
+    border-radius: 0;
+    cursor: pointer;
+    transition: 300ms ease;
+    color: white;
+    background-color: #6b6b6b;
+}
+div.input-group-btn button:hover {
+    transform: scale(1.1);
+    border-radius: 0.2cm;
+    transition: 300ms ease;
+}
+button#send {
+    animation: glow 8s linear infinite;
+    border-left: transparent;
+    border-right: transparent;
+}
+button#send:hover {border: 1px solid #fff;}
+button#clearLog {
+    border-top-right-radius: 0.2cm;
+    border-bottom-right-radius: 0.2cm;
+}
+/* Settings Popup */
+div.settings-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #fff;
+    border-radius: 0.2cm;
+    overflow: hidden;
+    z-index: 10;
+    padding: 0.5cm;
+    background-color: #0F0F0F;
+    color: #fff;
+    transition: 500ms ease;
+}
+span.settings-elem {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+span.settings-elem label {cursor: pointer;}
+div.settings-popup span.logged-as {
+    border: 3px white solid;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+span.close-popup {
+    position: absolute;
+    top: -12.5px;
+    right: 0;
+    font-size: 30px;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    transition: 300ms ease;
+}
+span.close-popup:hover {
+    transition: 300ms ease;
+    color: red;
+}
+button.save-db {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.center {text-align: center;}
