@@ -1,5 +1,6 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
+header("Cache-Control: must-understand, no-store");
 
 require_once "rcon.php";
 session_set_cookie_params(3600 * 24 * 7);
