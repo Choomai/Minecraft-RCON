@@ -11,8 +11,8 @@
         $username = $_POST["username"];
         if ($row = $auth->check($username)) {
             if (password_verify($_POST["password"], $row["password"])) {
-                $_SESSION["username"] = $username;
-                $_SESSION["password"] = $pass;
+                $_SESSION["username"] = $row["username"];
+                $_SESSION["password"] = $row["password"];
                 $isSuccess = true;
                 $auth->log("$username has logged in.");
             } else {
