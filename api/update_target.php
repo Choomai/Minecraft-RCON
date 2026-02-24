@@ -4,9 +4,6 @@
     $target_host = $_POST["host"];
     $target_port = $_POST["port"];
     $target_pass = $_POST["pass"];
-    session_start();
-    $username = getValueFromSession("username");
-    $pass = getValueFromSession("password");
 
     if (!isset($username, $pass)) {
         http_response_code(401);
