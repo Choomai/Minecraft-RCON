@@ -14,8 +14,7 @@
         exit;
     }
 
-    $db = new mysqli(hostname:"localhost", username:"www-data", database:"RCON Minecraft", socket: "/var/run/mysqld/mysqld.sock");
-    $statement = $db->prepare("UPDATE account_list SET target_host=?, target_port=?, target_password=? WHERE username=? AND password=?");
+    $statement = $auth->db->prepare("UPDATE account_list SET target_host=?, target_port=?, target_password=? WHERE username=? AND password=?");
 
     $statement->bind_param("sisss", $target_host, $target_port, $target_pass, $username, $pass);
     $statement->execute();
@@ -23,7 +22,6 @@
     $_SESSION["port"] = $target_port;
     $_SESSION["pass"] = $target_pass;
 
-    $log_content = $db->real_escape_string("$username has changed their target server to [$target_host, $target_port, $target_pass].");
-    $db->query("INSERT INTO user_logs(info) VALUES('$log_content')");
-    $db->close();
+    $log_content = $auth->db->real_escape_string("$username has changed their target server to [$target_host, $target_port, $target_pass].");
+    $auth->db->query("INSERT INTO user_logs(info) VALUES('$log_content')");
 ?>

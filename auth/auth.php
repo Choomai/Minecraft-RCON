@@ -50,15 +50,15 @@ class Auth {
         $statement->execute();
         
         $result = $statement->get_result();
-        if ($result->fetch_assoc()) {
-            $result->close();   
-            return true;
+        if ($row = $result->fetch_assoc()) {
+            $result->close(); 
+            return $row;
         };
         $result->close();
     }
 
     function check_login($username, $password) {
-        $this->sql_cmd = "SELECT * FROM account_list WHERE username=? AND password=?";
+        $this->sql_cmd = "SELECT id FROM account_list WHERE username=? AND password=?";
         $statement = $this->db->prepare($this->sql_cmd);
         $statement->bind_param("ss", $username, $password);
         $statement->execute();
@@ -69,6 +69,7 @@ class Auth {
             return true;
         };
         $result->close();
+        return false;
     }
 
     function register($username, $pass) {
