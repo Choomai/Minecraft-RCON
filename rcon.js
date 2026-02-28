@@ -177,3 +177,7 @@ $("button.save-db").click(async e => {
     await saveTargetServer($('input#target_host').val(), $('input#target_port').val(), $('input#target_passwd').val());
     e.target.disabled = false;
 })
+$("span.settings").click(() => settingsPopup("show"))
+$("span.close-popup").click(() => settingsPopup("hide"))
+$("input#auto-scroll").click(() => settings("auto-scroll"))
+$("input#hide-desc").click(() => settings("hide-desc"))

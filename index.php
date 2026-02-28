@@ -40,7 +40,7 @@
                 <div class="panel-body"><ul class="list-group" id="groupConsole"></ul></div>
             </div>
             <div class="input-group">
-                <span class="settings" onclick="settings_popup('show')"><span class="material-symbols-outlined">settings</span></span>
+                <span class="settings"><span class="material-symbols-outlined">settings</span></span>
                 <div id="txtCommandResults"></div>
                 <input type="text" class="form-control" id="txtCommand">
                 <div class="input-group-btn">
@@ -51,19 +51,19 @@
         </div>
     </main>
     <div id="settings" class="settings-popup" style="display:none">
-        <span class="close-popup" onclick="settings_popup('hide')">&times;</span>
+        <span class="close-popup">&times;</span>
         <span class="logged-as">Currently signed in as&nbsp;<b id="current-username"><?= $username?></b></span>
         <div class="settings-container center">
             <h3>Settings</h3>
-            <span class="settings-elem"><input id="auto-scroll" class="toggle" type="checkbox" onchange="settings('auto-scroll')"><label for="auto-scroll">&nbsp;Auto-scoll console log to bottom</label></span>
-            <span class="settings-elem"><input id="hide-desc" class="toggle" type="checkbox" onchange="settings('hide-desc')"><label for="hide-desc">&nbsp;Hide button description</label></span>
+            <span class="settings-elem"><input id="auto-scroll" class="toggle" type="checkbox"><label for="auto-scroll">&nbsp;Auto-scoll console log to bottom</label></span>
+            <span class="settings-elem"><input id="hide-desc" class="toggle" type="checkbox"><label for="hide-desc">&nbsp;Hide button description</label></span>
         </div>
         <div class="target-server-container center">
             <h3>Target Server</h3>
             <input id="target_host" type="text" value="<?= $_SESSION["target_host"];?>">
             <input id="target_port" type="number" min="1" max="65535" value="<?= $_SESSION["target_port"];?>">
             <input id="target_passwd" type="password" value="<?= $_SESSION["target_pass"];?>"><br>
-            <button class="save-db" onclick="saveTargetServer($('input#target_host').val(), $('input#target_port').val(), $('input#target_passwd').val())">Save to database</button>
+            <button type="button" class="save-db">Save to database</button>
             <span id="save-db_notify" style="display:none"></span>
         </div>
     </div>
