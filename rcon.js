@@ -130,29 +130,27 @@ function sendCommand(command) {
         logDanger("RCON error.");
     });
 };
-function saveTargetServer(host, port, passwd) {
+async function saveTargetServer(host, port, passwd) {
     const formData = new FormData();
     formData.append("host", host);
     formData.append("port", port || 25575);
     formData.append("pass", passwd);
     let resultStr = null;
-    fetch("api/update_target.php", {
-        method: "POST",
-        body: formData
-    }).then(res => {
-        resultStr = `with HTTP response code ${res.status}`
-        return res;
-    })
-    .then(res => {
-        if (res.ok) {resultStr = "Saved " + resultStr}
+    try {
+        const updateFetch = await fetch("api/update_target.php", {
+            method: "POST",
+            body: formData
+        });
+        resultStr = `with HTTP response code ${updateFetch.status}`
+        if (updateFetch.ok) {resultStr = "Saved " + resultStr}
         else {resultStr = "Failed to save " + resultStr}
-    })
-    .catch(() => {resultStr = "Failed to save " + resultStr})
-    .finally(() => {
+    } catch {
+        resultStr = "Failed to save " + resultStr;
+    } finally {
         $("span#save-db_notify").html(resultStr);
         $("span#save-db_notify").show("slide", {duration: 500});
         setTimeout(() => {$("span#save-db_notify").hide("slide", {duration: 500})}, 5000);
-    })
+    }
 }
 
 function settings_popup(type) {
@@ -173,3 +171,9 @@ function settings(type) {
     };
     localStorage.setItem(type,$("#"+type)[0].checked);
 }
+
+$("button.save-db").click(async e => {
+    e.target.disabled = true;
+    await saveTargetServer($('input#target_host').val(), $('input#target_port').val(), $('input#target_passwd').val());
+    e.target.disabled = false;
+})
