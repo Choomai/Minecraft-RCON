@@ -44,7 +44,6 @@ div#txtCommandResults > ul{
     overflow-x: hidden;
 }
 
-/* Web owner styles / Start */
 @font-face {
     font-family: "White Rabbit";
     src: local("White Rabbit"), url("https://assets.choomai.net/fonts/WhiteRabbit.woff");
@@ -76,13 +75,13 @@ ul {
     list-style-type: none;
 }
 h1, h2, h3, h4 {margin: 0;}
-/* Icons / Start */
+
 span.material-symbols-outlined {
     font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48;
     user-select: none;
 }
-/* Icons / End */
-/* Toggle switch / Start */
+
+
 .toggle {
     appearance: none;
     min-width: 54px;
@@ -127,14 +126,16 @@ span.material-symbols-outlined {
     text-indent: -25px;
     left: 32px;
 }
-/* Toggle switch / End */
+
+
 div.alert {
     background-color: #444;
     padding: 14px;
     border: 1px solid transparent;
     border-radius: 0.15cm;
 }
-/* Console */
+
+
 div#consoleRow{
     position: absolute;
     top: 80px;
@@ -220,7 +221,7 @@ time.label-success {background-color: green;}
 time.label-warning {background-color: darkgoldenrod;}
 time.label-danger {background-color: red;}
 
-/* User input and command button */
+
 @keyframes glow {to {background-position: 300%;}}
 .btn-gradient {
     color: white;
@@ -306,7 +307,8 @@ button#clearLog {
     border-top-right-radius: 0.2cm;
     border-bottom-right-radius: 0.2cm;
 }
-/* Settings Popup */
+
+
 div.settings-popup {
     position: absolute;
     top: 50%;
