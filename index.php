@@ -21,7 +21,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-ui/dist/jquery-ui.min.js"></script>
     <script src="rcon.js" defer></script>
-    <script>const username = "<?= $username?>";</script>
     <title>Minecraft RCON</title>
 </head>
 <body>

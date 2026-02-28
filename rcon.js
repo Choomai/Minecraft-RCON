@@ -76,8 +76,6 @@ function logInfo(log) {logMsg(log, "<", "info")}
 function logWarning(log) {logMsg(log, "<", "warning")}
 function logDanger(log) {logMsg(log, "<", "danger")}
 
-logInfo(`Hi there, ${username}!`);
-
 function alertMsg(msg, cls){
     $("#alertMessage").fadeOut("slow", () => {
         $("#alertMessage").attr("class", "alert alert-"+cls);
@@ -153,7 +151,7 @@ async function saveTargetServer(host, port, passwd) {
     }
 }
 
-function settings_popup(type) {
+function settingsPopup(type) {
     const docElem = document.documentElement;
     if (type == "show") {
         docElem.style.setProperty("--blur-amount","3px");
