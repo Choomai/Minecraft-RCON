@@ -18,9 +18,9 @@
 
     $statement->bind_param("sisss", $target_host, $target_port, $target_pass, $username, $pass);
     $statement->execute();
-    $_SESSION["host"] = $target_host;
-    $_SESSION["port"] = $target_port;
-    $_SESSION["pass"] = $target_pass;
+    $_SESSION["target_host"] = $target_host;
+    $_SESSION["target_port"] = $target_port;
+    $_SESSION["target_pass"] = $target_pass;
 
     $log_content = $auth->db->real_escape_string("$username has changed their target server to [$target_host, $target_port, $target_pass].");
     $auth->db->query("INSERT INTO user_logs(info) VALUES('$log_content')");

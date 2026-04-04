@@ -96,12 +96,6 @@ function sendCommand(command) {
     fetch("api/index.php", {method: "POST", body: formData})
     .then(res => res.json())
     .then(json => {
-        if (!json.response) {
-            alertDanger("Malformed RCON API response"); 
-            logDanger("Malformed RCON API response");
-            return;
-        }
-
         if (json.status == "error") {
             alertDanger(json.error); 
             logDanger(json.error);

@@ -64,9 +64,9 @@ class Auth {
         $statement->execute();
         
         $result = $statement->get_result();
-        if ($result->fetch_assoc()) {
+        if ($row = $result->fetch_assoc()) {
             $result->close();   
-            return true;
+            return $row;
         };
         $result->close();
         return false;

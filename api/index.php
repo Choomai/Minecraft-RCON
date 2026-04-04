@@ -26,7 +26,7 @@ if (!isset($host, $port, $password)) {
     exit(json_encode($response));
 };
 if (!$rcon->connect()) {
-    http_response_code(403);
+    http_response_code(400);
     $response["error"] = "RCON connection error";
     exit(json_encode($response));
 };
